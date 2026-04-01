@@ -1,0 +1,60 @@
+# DMAS Default Configuration
+# All parameters correspond to values described in the paper.
+
+agent:
+  # Threat scoring thresholds
+  tau_alert: 0.45          # local score threshold to initiate CVT vote
+  tau_consensus: 0.75      # aggregate vote threshold for quarantine decision
+  delta_t_ms: 0.5          # vote collection timeout in milliseconds
+  alpha: 0.1               # distance-decay rate for proximity weighting
+  beta: 0.9                # EWMA smoothing factor for reputation updates
+  initial_reputation: 0.5  # starting reputation for new agents
+  probationary_hours: 24   # hours new agents stay in probationary mode
+  probationary_weight: 0.5 # vote weight multiplier during probation
+
+monitoring:
+  ewma_lambda: 0.05        # EWMA smoothing factor for statistical detector
+  sigma_threshold: 3.0     # standard deviations for anomaly flag
+  window_size_seconds: 60  # rolling window for EWMA statistics
+  sequence_window: 20      # number of time steps fed to behavioral model
+
+  behavioral_model:
+    hidden_dim: 64
+    dropout: 0.2
+    num_layers: 2
+    input_features: 8      # features per time step
+
+  ensemble_weights:
+    statistical: 0.35      # w_s
+    behavioral: 0.40       # w_b
+    signature: 0.25        # w_m
+
+  signature_db:
+    # Patterns loaded from config or file; format: hex strings
+    patterns: []
+    pattern_file: null     # optional path to a .txt file of hex patterns
+
+consensus:
+  quorum_fraction: 0.51    # minimum fraction of agents needed for quorum
+  max_byzantine_fraction: 0.33  # f < n/3
+
+communication:
+  multicast_group: "224.0.0.251"
+  multicast_port: 5355
+  heartbeat_hz: 1
+  message_max_bytes: 256
+  protocol: "UDP_MULTICAST"
+
+response:
+  quarantine_enabled: true
+  alert_enabled: true
+  forensics_enabled: true
+  alert_log_path: "logs/alerts.jsonl"
+  forensics_log_path: "logs/forensics.jsonl"
+
+simulation:
+  n_agents: 5
+  n_devices: 100
+  seed: 42
+  tick_ms: 10             # simulation time step in milliseconds
+  attack_rate_per_min: 5
