@@ -15,13 +15,12 @@ import logging
 import math
 import time
 from dataclasses import dataclass, field
-from typing import Dict, List, Optional, Tuple
+from typing import Dict, List, Optional
 
 import numpy as np
 
 from dmas.agent import DMASAgent
-from dmas.communication.p2p_protocol import DMASMessage, MessageType
-from dmas.simulation.attack_generator import AttackEvent, AttackGenerator, AttackType
+from dmas.simulation.attack_generator import AttackEvent, AttackGenerator
 
 logger = logging.getLogger(__name__)
 
@@ -130,7 +129,7 @@ class DMASTestbed:
         self.log_dir = log_dir
 
         self._rng = np.random.default_rng(seed)
-        self._sim_bus: Dict[str, "P2PProtocol"] = {}   # shared message bus
+        self._sim_bus: Dict[str, object] = {}   # shared message bus
 
         # Build agents on a 2D grid
         self.agents: Dict[str, DMASAgent] = {}
@@ -189,7 +188,6 @@ class DMASTestbed:
             self.agents[agent_id] = agent
 
     def _setup_devices(self) -> None:
-        device_classes = ["plc", "scada", "camera", "sensor"]
         idx = 0
         for agent_id in self.agents:
             for j in range(self.devices_per_agent):

@@ -14,7 +14,6 @@ import sys
 import os
 sys.path.insert(0, os.path.join(os.path.dirname(__file__), ".."))
 
-import numpy as np
 from dmas.agent import DMASAgent
 from dmas.simulation.attack_generator import AttackGenerator, AttackType
 

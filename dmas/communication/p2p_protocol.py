@@ -21,7 +21,7 @@ import logging
 import socket
 import struct
 import time
-from dataclasses import asdict, dataclass
+from dataclasses import dataclass
 from enum import IntEnum
 from typing import Callable, Dict, Optional
 

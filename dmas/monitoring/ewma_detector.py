@@ -15,8 +15,8 @@ Paper reference — Section III-B-1:
 
 from __future__ import annotations
 import math
-from dataclasses import dataclass, field
-from typing import Dict, Optional
+from dataclasses import dataclass
+from typing import Dict
 
 
 @dataclass

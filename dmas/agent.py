@@ -14,11 +14,8 @@ Paper reference — Section III (System Architecture).
 from __future__ import annotations
 import logging
 import time
-import uuid
 from dataclasses import dataclass, field
 from typing import Dict, List, Optional, Tuple
-
-import numpy as np
 
 from dmas.monitoring.monitoring_engine import MonitoringEngine, DeviceObservation
 from dmas.consensus.cvt_protocol import CVTProtocol, VoteRequest, VoteResponse
@@ -248,7 +245,6 @@ class DMASAgent:
         feature_vector = p.get("fv", [])
 
         # Build a pseudo VoteRequest for the CVT protocol
-        from dmas.consensus.cvt_protocol import VoteRequest
         req = VoteRequest(
             agent_id=msg.sender_id,
             threat_id=threat_id,

@@ -1,6 +1,5 @@
 """Tests for CVTProtocol — the 4-phase consensus algorithm."""
 import math
-import pytest
 from dmas.consensus.cvt_protocol import CVTProtocol, VoteRequest, VoteResponse
 from dmas.consensus.reputation import ReputationTracker
 

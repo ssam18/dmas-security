@@ -35,7 +35,6 @@ class TestAttackGenerator:
         )
         assert len(batch) == 60
         attacks = [e for e in batch if e.ground_truth]
-        normals = [e for e in batch if not e.ground_truth]
         # Attack fraction should be roughly 50% ± some variance
         assert 10 < len(attacks) < 55
 

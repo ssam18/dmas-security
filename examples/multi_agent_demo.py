@@ -35,7 +35,7 @@ def main():
         log_dir="logs",
     )
 
-    result = tb.run(n_events=400, attack_fraction=0.20, verbose=True)
+    tb.run(n_events=400, attack_fraction=0.20, verbose=True)
 
     print("\n  Swarm Agent Summaries:")
     print(f"  {'Agent':<12}  {'Observations':>13}  {'Detections':>10}  "
@@ -47,7 +47,7 @@ def main():
               f"{s['n_quarantines']:>12}  "
               f"{s['reputation_self']:>10.3f}")
 
-    print(f"\n  Logs written to: logs/")
+    print("\n  Logs written to: logs/")
     print(f"  Total alert log entries: "
           f"{sum(1 for f in os.listdir('logs') if 'alerts' in f)} files")
 

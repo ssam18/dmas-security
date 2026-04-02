@@ -1,5 +1,4 @@
 """Tests for EWMADetector."""
-import math
 import pytest
 from dmas.monitoring.ewma_detector import EWMADetector
 

@@ -13,7 +13,6 @@ Paper reference — Section III-B-1:
 """
 
 from __future__ import annotations
-import re
 from typing import Dict, List, Optional
 
 try:
